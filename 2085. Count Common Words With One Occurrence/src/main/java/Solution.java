@@ -1,4 +1,5 @@
-import java.util.HashMap;
+import java.sql.Array;
+import java.util.*;
 
 /***********************************************************************************************************************
  * 2085. Count Common Words With One Occurrence
@@ -10,31 +11,56 @@ import java.util.HashMap;
 public class Solution {
 
     public int countWords(String[] words1, String[] words2) {
-        int res = 0;
-        HashMap<Integer, String> resmap = new HashMap<>();
-        int[] words1map = new int[words1.length];
-        int[] words2map = new int[words2.length];
 
-        for (int i = 0; i != words1.length; i++ ) {
-            String s = words1[i];
-            Integer hcode = s.hashCode();
+        Map<String, Boolean> uniqWords1 =  new TreeMap<>();
+        Map<String, Boolean> uniqWords2 =  new TreeMap<>();
+        ArrayList<String> resWords = new ArrayList<>();
 
-            if ( resmap.containsKey(hcode) && ( (resmap.get(hcode) == null) || resmap.get(hcode).equals(s) ) ){
-                resmap.put( hcode, null );
-                words1map[i] = 0;
-            } else {
-                resmap.put( hcode, s );
-                words1map[i] = 1;
+        // 1. Найти пересечение двух массивов
+
+        for ( String word : words1 ) {
+            if ( uniqWords1.containsKey(word) ) {
+                uniqWords1.put( word, false );
+                continue;
             }
+            uniqWords1.put(word, true);
+
         }
 
-        for ( int i = 0; i != words2.length; i++ ) {
-            String s = words1[i];
-            Integer hcode = s.hashCode();
+        for ( String word : words2 ) {
+            if ( uniqWords2.containsKey(word) ) {
+                uniqWords2.put( word, false );
+                continue;
+            }
+            uniqWords2.put(word, true);
 
-            if( )
         }
 
-        return res;
+        uniqWords1.forEach((s, aBoolean) -> {
+            if ( aBoolean && uniqWords2.containsKey(s) && uniqWords2.get(s) ){
+                resWords.add(s);
+            }
+        });
+
+
+        // 2. Убедиться, что эти слова уникальны в своих массивах
+
+        return resWords.size();
     }
+
+    public static void main(String[] args) {
+        String[] s1 = new String[]{"leetcode","is","amazing","as","is"};
+        String[] s2 = new String[]{"amazing","leetcode","is"};
+        Solution sol = new Solution();
+        System.out.println(sol.countWords(s1, s2));
+
+        String[] s3 = new String[]{"a","ab"};
+        String[] s4 = new String[]{"a","a","a","ab"};
+        Solution sol2 = new Solution();
+        System.out.println(sol2.countWords(s3, s4));
+
+    }
+
 }
+
+
