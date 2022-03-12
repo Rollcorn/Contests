@@ -9,7 +9,7 @@
 class Solution {
     String[] stringRow = new String[]{"qwertyuiop", "asdfghjkl", "zxcvbnm"};
 
-    public String[] findWords(String[] words) {
+    public String[] findWords( String[] words ) {
         String[] result;
 
         // Перебираем ряды символов 
