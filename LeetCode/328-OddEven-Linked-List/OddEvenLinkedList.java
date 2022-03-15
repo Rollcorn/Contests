@@ -22,24 +22,34 @@ public class OddEvenLinkedList {
 //  1 ---> 2 ---> 3 ---> 4 ---> 5
 
     public ListNode oddEvenList(ListNode head) {
- 
+  
         ListNode lastOddNode = head;
         ListNode firstEvenNode = head;
-        ListNode currentNode = firstEvenNode;
+        ListNode currentNode = head;
+        
 
+        
         while ( currentNode != null ) {
-
+            
+            if ( currentNode == head ) {
+                firstEvenNode = currentNode.next;
+                currentNode = currentNode.next;
+                continue;
+            }
+            
             ListNode nextNode = currentNode.next;
             
             if ( currentNode != head && nextNode != null ) {
-                System.out.println( "current node-" + currentNode.val  + " next node-" + nextNode.val);
                 lastOddNode.next = nextNode;
                 lastOddNode = nextNode;
                 currentNode.next = nextNode.next;
             }
             currentNode = currentNode.next; 
         }
-        lastOddNode.next = firstEvenNode;
+        
+        if (lastOddNode != head ) {
+            lastOddNode.next = firstEvenNode;    
+        }
 
         return head;
     }
@@ -64,14 +74,14 @@ public class OddEvenLinkedList {
         ListNode fourth = new ListNode(5);
         ListNode third = new ListNode(3);
         ListNode sec = new ListNode(1);
-        // ListNode head = new ListNode(2);
-        ListNode head = null;
-        // head.next = sec;
-        // sec.next = third;
-        // third.next = fourth;
-        // fourth.next = fivth;
-        // fivth.next = sixth;
-        // sixth.next = seventh;
+        ListNode head = new ListNode(2);
+        // ListNode head = null;
+        head.next = sec;
+        sec.next = third;
+        third.next = fourth;
+        fourth.next = fivth;
+        fivth.next = sixth;
+        sixth.next = seventh;
         seventh.next = null;
 
         OddEvenLinkedList res = new OddEvenLinkedList(); 
@@ -79,6 +89,7 @@ public class OddEvenLinkedList {
         res.printList(sortRes);
     }
 }
+
 class ListNode {
     int val;
     ListNode next;
