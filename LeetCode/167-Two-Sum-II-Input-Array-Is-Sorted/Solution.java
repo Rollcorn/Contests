@@ -20,53 +20,45 @@ import java.util.Arrays;
 
 class Solution {
 
-    public int findTarget(int[] nums, int target) {
-        int beginArrayIndex = 0;
-        int endArrayIndex = nums.length - 1;
-        int middleArrayIndex = endArrayIndex / 2;
+    public int findTarget(int[] nums, int target, int currIndex ) {
+        int leftIndex = 0;
+        int rightIndex = nums.length - 1;
+        int middleArrayIndex;
 
-        while( (endArrayIndex - beginArrayIndex) >= 0 && nums[middleArrayIndex] != target) {
-            if( target < nums[beginArrayIndex] || target > nums[endArrayIndex] ) { 
-                return -1;
+        while( leftIndex <= rightIndex ) {
+
+            middleArrayIndex = leftIndex + (rightIndex - leftIndex) / 2;
+
+            if ( nums[middleArrayIndex] == target  && (middleArrayIndex != currIndex) ) {
+                return middleArrayIndex;
             } 
-            
-            if ( target > nums[middleArrayIndex] ) {
-                beginArrayIndex = middleArrayIndex + 1;
+            if( target < nums[middleArrayIndex] ){
+                rightIndex = middleArrayIndex - 1;
             } else {
-                endArrayIndex = middleArrayIndex;
+                leftIndex = middleArrayIndex + 1;
             }
-
-            middleArrayIndex = beginArrayIndex + (endArrayIndex - beginArrayIndex) / 2;
-        }            
-
-        if (nums[middleArrayIndex] == target){
-            return middleArrayIndex;
-        } else {
-            return -1;
         }
+        
+        return -1;
     }
 
     public int[] twoSum(int[] numbers, int target) {
         int[] arrIndexes = new int[2];
-        int firstIndex = 0;
+        
         int secondIndex = 0;
 
-        
+        for( int firstIndex = 0; firstIndex < numbers.length; firstIndex++ ){
+            System.out.println("try to find = " + (target - numbers[firstIndex]) );
+            secondIndex = findTarget( numbers, target - numbers[firstIndex], firstIndex );
 
-        while( numbers[firstIndex] <= target ){
-            secondIndex = findTarget( numbers, target - numbers[firstIndex] );
-
-            if ( secondIndex != -1 && firstIndex != secondIndex ) {
+            if ( secondIndex + 1 != 0   ) {
                 arrIndexes[0] = firstIndex + 1;
                 arrIndexes[1] = secondIndex + 1;
-                break;
-            } else {
-                secondIndex = 0;
-                ++firstIndex;
-            }
+                return arrIndexes;
+            } 
         }
-        Arrays.sort(arrIndexes);
-        return arrIndexes;
+        return null;
+        // Arrays.sort(arrIndexes);
     }
     
     public static void main(String[] args) {
@@ -75,28 +67,38 @@ class Solution {
         int[] arr3 = {2,3,4};
         int[] arr4 = {-1,0};
         int[] arr5 = {1,2,3,4,4,9,56,90};
+        int[] arr6 = {-1,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 
         Solution s = new Solution();
 
         printArray(arr1);
         int[] res1 = s.twoSum(arr1, 4);
         printArray(res1);
-        
+        System.out.println();
+
         printArray(arr2);
         int[] res2 = s.twoSum(arr2, 9);
         printArray(res2);
+        System.out.println();
 
         printArray(arr3);
         int[] res3 = s.twoSum(arr3, 6);
         printArray(res3);
+        System.out.println();
 
         printArray(arr4);
         int[] res4 = s.twoSum(arr4, -1);
         printArray(res4);
+        System.out.println();
 
         printArray(arr5);
         int[] res5 = s.twoSum(arr5, 8);
         printArray(res5);
+        System.out.println();
+
+        printArray(arr6);
+        int[] res6 = s.twoSum(arr6, -2);
+        printArray(res6);
     }
 
     public static void printArray(int[] arr){
