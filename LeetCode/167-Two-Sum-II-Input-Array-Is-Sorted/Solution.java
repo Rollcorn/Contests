@@ -42,6 +42,7 @@ class Solution {
         return -1;
     }
 
+    // This solution O(N*logN)
     public int[] twoSum(int[] numbers, int target) {
         int[] arrIndexes = new int[2];
         
@@ -58,8 +59,28 @@ class Solution {
             } 
         }
         return null;
-        // Arrays.sort(arrIndexes);
     }
+
+    /* This solution O(N) */
+    // public int[] twoSum(int[] nums, int target) {
+    //     int i=0;
+    //     int j=nums.length-1;
+    //     while(i<j){
+    //         int sum=nums[i]+nums[j];
+    //         if(sum==target){
+    //             int[] ar = {++i,++j};
+    //             return ar;
+    //         }
+    //         if(sum>target){
+    //             j--;
+    //         }
+    //         else{
+    //             i++;
+    //         }
+
+    //     }
+    //     return null;
+    // }
     
     public static void main(String[] args) {
         int[] arr1 = {0,1,0,3,12};
