@@ -1,3 +1,14 @@
+/*************************************************************************
+ * TASK:
+ *  Given the head of a linked list, remove the nth node from the end of 
+ *  the list and return its head.
+ *  https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+ * 
+ * Constraints:
+ *  1 <= sz <= 30
+ *  0 <= Node.val <= 100
+ *  1 <= n <= sz
+ */
 
  class ListNode {
     int val;
@@ -12,28 +23,42 @@ public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode currentNode = head;
         int listSize = 0;
+
         while( currentNode != null ){
             listSize++;
             currentNode = currentNode.next;
         }
 
-        if ( listSize > 0 ){
-            currentNode = head;
-        } else {
-            currentNode = null;
+        if( listSize == n ){
+            head = head.next;
+            return head;
         }
-        
-        
-        for ( int i = 1; currentNode != null && i != n + 1; ++i ){
+        else {
+            currentNode = head;
+        }
+
+        // Поиск необходимого узла
+        for ( int i = 1; i < listSize - n; ++i ){
             currentNode = currentNode.next;
         }
 
-        if (currentNode != null){
-            currentNode.next = currentNode.next.next;
-        }
-
+        currentNode.next = currentNode.next.next;
         return head;
     }
 
+    public static void main(String[] args) {
+        /**
+         * Input: head = [1,2,3,4,5], n = 2
+         * Output: [1,2,3,5]
+         * 
+         * Input: head = [1], n = 1
+         * Output: []
+         * 
+         * Input: head = [1,2], n = 1
+         * Output: [1]
+         * 
+         */
+
+    }
 
 }
