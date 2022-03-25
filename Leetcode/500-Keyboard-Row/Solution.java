@@ -11,6 +11,7 @@ import java.util.HashSet;
 
 class Solution {
 
+<<<<<<< HEAD:Leetcode/500-Keyboard-Row/Solution.java
     public boolean isWordBelongToSet( HashSet<Character> set, String word ){
         for (int i = 1; i < word.length(); ++i ){
             if( !set.contains(word.charAt(i)) ){
@@ -19,6 +20,17 @@ class Solution {
         }
         return true;
     }
+=======
+    public String[] findWords( String[] words ) {
+        String[] result;
+
+        // Перебираем ряды символов 
+        for ( String strRow : stringRow ) {
+            char[] charRow = strRow.toString().toCharArray();    
+            // Перебираем слова 
+            for (String currWordStr : words ) {
+                char[] currWordChar = currWordStr.toString().toCharArray();    
+>>>>>>> 6decec2df260427ec8e76c42e40b44e12d4da414:LeetCode/500-Keyboard-Row/Solution.java
 
     public String[] findWords(String[] words) {
         ArrayList<String> result = new ArrayList<>();
