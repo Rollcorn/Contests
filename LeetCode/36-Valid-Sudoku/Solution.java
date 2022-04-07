@@ -20,12 +20,33 @@ import java.util.Hashtable;
 class Solution {
     
     public boolean isValidSudoku(char[][] board) {
-        
-        HashSet<Character> mHashtable = new HashSet<>();
 
+        for ( int i = 0; i < board.length; ++i ){
+            HashSet<Character> rowSet = new HashSet<>();
+            HashSet<Character> colSet = new HashSet<>();
+            HashSet<Character> cubeSet = new HashSet<>();
 
-
-        return false;
+            for ( int j = 0; j < board[0].length; ++j ){
+                // ищем дублирование данного числа в i-ом ряду 
+                if ( board[i][j] != '.' && !rowSet.add(board[i][j]) ){
+                    return false;
+                }
+                // ищем дублирование данного числа в i-ом столбце 
+                if ( board[j][i] != '.' && !colSet.add(board[j][i]) ){
+                    return false;
+                }
+                
+                // rowCubeInd и colCubeInd это координаты левой верхней ячейки 
+                // одного из 9 квадратов в поле игры
+                int rowCubeInd = 3*(i/3);
+                int colCubeInd = 3*(i%3);
+                if ( board[rowCubeInd + j/3][colCubeInd + j%3] != '.' 
+                    && !cubeSet.add(board[rowCubeInd + j/3][colCubeInd + j%3]) ){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -53,6 +74,14 @@ class Solution {
 
         System.out.println( Arrays.deepToString(board1) );
         System.out.println( Arrays.deepToString(board2) );
+
+
+        for (int i = 0; i < 9; ++i ){
+            int rowCubeInd = (i/3);
+            int colCubeInd = (i%3);
+            System.out.println(i + ")\trowCubeInd = " + rowCubeInd );
+            System.out.println("\tcolCubeInd = " + colCubeInd );
+        }
 
         Solution s = new Solution();
         System.out.println( s.isValidSudoku(board1) );
