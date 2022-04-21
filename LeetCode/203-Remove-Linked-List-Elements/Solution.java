@@ -15,30 +15,39 @@ class ListNode {
  }
 
  public class Solution {
+
+//  1 Var. time O(N) space O(1)
     public ListNode removeElements(ListNode head, int val) {
         ListNode curNode = head;
+        if (head == null) {
+            return null;
+        }
         while (curNode != null ) {
             if ( curNode.val == val ) {
-                ListNode tmp = curNode.next;
-                curNode.next = null;
                 if ( head == curNode ) {
-                    System.out.print( " del cur " + head.val);
-                    head = tmp;
+                    head = curNode.next;
                 }
-                curNode = tmp;
+                curNode = curNode.next;
             } else
             if ( curNode.next != null && curNode.next.val == val ) {
-                System.out.print( " del next " + curNode.val);
-                ListNode tmp = curNode.next.next;
-                curNode.next.next = null;
-                curNode.next = tmp;
+
+                curNode.next = curNode.next.next;
             } else {
                 curNode = curNode.next;
             }
         }
-
         return head;
     }
+
+
+    /** 2 Var. Recursive. time O(N) space O(N)
+     *  public ListNode removeElements(ListNode head, int val) {
+     *      if (head == null) return null;
+     *      head.next = removeElements(head.next, val);
+     *      return head.val == val ? head.next : head;
+     *  }
+     * 
+     */
 
     public static void printList(ListNode head){
         ListNode curNode = head;
@@ -52,7 +61,6 @@ class ListNode {
         }
         System.out.print(")");
         System.out.println();
-
     }
 
     public static void main(String[] args) {
