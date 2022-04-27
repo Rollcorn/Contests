@@ -42,9 +42,14 @@ class Solution {
                         numList.add( new String[]{"Group " + grInd} );
                         ++grInd;
                     }
-                    prevStrArr = strarr;
+                    if ( !reader.ready() ) {
+                        numList.add(strarr);
+                    } else {
+                        prevStrArr = strarr;
+                    }
                 }
             }
+
         }
         catch(IOException ex) {
             System.out.println(ex.getMessage());
@@ -56,7 +61,7 @@ class Solution {
             if ( !str1[i].replace('\"', ' ').trim().isEmpty() &&
                     !str2[i].replace('\"', ' ').trim().isEmpty() &&
                     str1[i].replace('\"', ' ').trim().equals(str2[i].replace('\"', ' ').trim()) ){
-                System.out.println(i + " MATCH [" + str1[i] + "] AND ["+ str2[i] + "]");
+                System.out.println(i+1 + " MATCH [" + str1[i] + "] AND ["+ str2[i] + "]");
                 return true;
             }
         }
@@ -77,7 +82,6 @@ class Solution {
                     }
                 }
                 writer.append('\n');
-
             }
             writer.flush();
         }
