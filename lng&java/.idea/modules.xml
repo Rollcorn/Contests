@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/lng&amp;java.iml" filepath="$PROJECT_DIR$/lng&amp;java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lngjava.iml" filepath="$PROJECT_DIR$/lngjava.iml" />
     </modules>
   </component>
 </project>
