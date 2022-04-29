@@ -6,13 +6,65 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
 
-class Solution {
+class Group {
+    // строки элементов принадлежащие группе
+    List<String[]> ListOfRows;
+    // элементы принадлежащие группе
+    HashMap<String, Integer> SetOfElems;
+//    HashSet<String> secColSetOfElems;
+//    HashSet<String> thirdColSetOfElems;
+
+    Group(){
+        ListOfRows = new ArrayList<>();
+        SetOfElems = new HashMap<>();
+
+    }
+
+    Group(String[] strArr){
+        ListOfRows = new ArrayList<>();
+        SetOfElems = new HashMap<>();
+//        secColSetOfElems = new HashSet<>();
+//        thirdColSetOfElems = new HashSet<>();
+        addStrToGroup(strArr);
+    }
+
+    // объединить группы
+    void megreGroup(Group other){
+        ListOfRows.addAll(other.ListOfRows);
+        SetOfElems.putAll(other.SetOfElems);
+//        firColSetOfElems.addAll(other.firColSetOfElems);
+//        secColSetOfElems.addAll(other.secColSetOfElems);
+//        thirdColSetOfElems.addAll(other.thirdColSetOfElems);
+    }
+
+    // добавить к группе новую строку
+    void addStrToGroup(String[] strArr){
+        ListOfRows.add(strArr);
+        firColSetOfElems.add(strArr[0].replace('\"', ' ').trim());
+        secColSetOfElems.add(strArr[1].replace('\"', ' ').trim());
+        thirdColSetOfElems.add(strArr[2].replace('\"', ' ').trim());
+
+    }
+
+    // Содержит ли группа элемент и если да то в каком столбце
+    int containsElem(String strElem){
+        if ( SetOfElems.get(strElem.replace('\"', ' ').trim()) )
+        return setOfGroupElems.contains(strElem);
+    }
+
+    void getElemSet(){
+        System.out.println(setOfGroupElems);
+    }
+}
+
+public class Solution {
     // В словаре хранятся списки строк, относящихся к одной группе,
-    ArrayList<List<String[]>> numList;
+    ArrayList<Group> groupsList;
+
     static final int elemsInRow = 3;
 
-    Solution(){
-        numList = new ArrayList<>();
+    Solution() {
+        groupsList = new ArrayList<>();
     }
 
     void scanFile( String fileName ) {

@@ -1,11 +1,19 @@
 
-o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¤©€
+j	java:S116"URename this field "ListOfRows" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÁ··
+o	java:S116"URename this field "SetOfElems" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éÃÖıÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ò½ÆÑ
+P	java:S125"<This block of commented-out lines of code should be removed.(¨®æw
+Q	java:S125#"<This block of commented-out lines of code should be removed.(÷‰ÿï
+N	java:S1068"9Replace this use of System.out or System.err by a logger.(ŒÎ´
+o	java:S115@"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¤©€
 C
-java:S1481"-Remove this unused "groupNum" local variable.(î¹´­
-S	java:S106A"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
-S	java:S106I"9Replace this use of System.out or System.err by a logger.(«ù¬¡øÿÿÿÿ
->	java:S108M")Either remove or fill this block of code.(å¥‡
-N	java:S106]"9Replace this use of System.out or System.err by a logger.(ãô´Ø
-S	java:S106k"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
+java:S1481S"-Remove this unused "groupNum" local variable.(î¹´­
+S	java:S106u"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
+S	java:S106}"9Replace this use of System.out or System.err by a logger.(«ù¬¡øÿÿÿÿ
+?	java:S108")Either remove or fill this block of code.(å¥‡
+O	java:S106‘"9Replace this use of System.out or System.err by a logger.(ãô´Ø
+T	java:S106Ÿ"9Replace this use of System.out or System.err by a logger.(ı™øøÿÿÿÿ
 0
 java:S1220""Move this file to a named package.
+]
+java:S39733"GUse indentation to denote the code conditionally executed by this "if".(·ú¿Á

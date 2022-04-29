@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="659e0b36-70fe-47ee-95ab-707ae4b475ab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/4/5448a68602611b5c7fc24cd8c0f3202b88736036" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca978eabdecd196146188714183f3f5a4b0355a5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/lngjava/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lng&amp;java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lngjava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lng.csv" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lng.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/lng&amp;java.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/lng.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lng&amp;java/result.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result.csv" beforeDir="false" afterPath="$PROJECT_DIR$/result.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lngjava/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/lngjava/Solution.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
