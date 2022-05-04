@@ -1,13 +1,13 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Group {
     // строки элементов принадлежащие группе
     private ArrayList<String[]> ListOfRows;
-    // элементы принадлежащие группе с указанием столбца к которому они относятся
 
+    // массив столбцов элементов принадлежащих группе
     private ArrayList<ArrayList<String> > ColKeys = new ArrayList<>();
 
+    // получить массив столбцов элементов принадлежащих группе
     public ArrayList<String> getColKeys(int i) {
         return ColKeys.get(i);
     }
@@ -31,7 +31,7 @@ public class Group {
     }
 
     // Объединить группы
-    void megreGroup(Group other) {
+    void mergeGroup(Group other) {
         for (String[] str : other.ListOfRows) {
             addStrToGroup(str);
         }
@@ -48,20 +48,29 @@ public class Group {
         }
     }
 
+    // Количество строк в группе
     Integer size(){
         return ListOfRows.size();
     }
 
+    // Получить массив строк принадлежащих группе
     ArrayList<String[]> getListOfRows() {
         return ListOfRows;
     }
 
+    // Получить количество существующих групп
+    public static int getGroupCount() {
+        return groupCount;
+    }
+
+    // Получить идентификатор группы
     public int getId() {
         return id;
     }
 
     // Ожидаемое кол-во элементов в строке
     static final int elemsInRow = 3;
+
     static private int groupCount = 0;
     private final int id;
 
