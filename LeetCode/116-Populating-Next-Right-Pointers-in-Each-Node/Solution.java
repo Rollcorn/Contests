@@ -33,9 +33,30 @@ class Node {
 
 
 class Solution {
+    int m_a;
+    Solution(int a){
+        m_a = a;
+    }
+
     public Node connect(Node root) {
         
         
+        
         return new Node();
+    }
+
+    public void print(){
+        System.out.println("this = "  + m_a);
+    }
+
+    public static void main(String[] args) {
+        boolean is = true;
+        if (is){
+            Solution a = new Solution(1);
+        }
+
+        Solution b = new Solution(2);
+        b.print();
+
     }
 }

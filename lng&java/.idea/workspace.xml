@@ -2,17 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="659e0b36-70fe-47ee-95ab-707ae4b475ab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lngjava/Colomn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lngjava/Group.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lngjava/Row.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LeetCode/116-Populating-Next-Right-Pointers-in-Each-Node/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LeetCode/116-Populating-Next-Right-Pointers-in-Each-Node/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lngjava/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/lngjava/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newresult2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lngjava/newresult2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lngjava/result.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lng.csv" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lng.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="28L944rmJwTPizIrMI5aCI5mums" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -24,12 +51,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="exceleditor.install" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -63,8 +91,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650984804341</updated>
+      <workItem from="1651256899107" duration="9034000" />
+      <workItem from="1651318426456" duration="17993000" />
+      <workItem from="1651587363279" duration="1999000" />
+      <workItem from="1651591661842" duration="5875000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -76,6 +111,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

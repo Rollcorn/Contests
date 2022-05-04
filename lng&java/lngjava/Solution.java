@@ -6,146 +6,111 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
 
-class Group {
-    // строки элементов принадлежащие группе
-    List<String[]> ListOfRows;
-    // элементы принадлежащие группе
-    HashMap<String, Integer> SetOfElems;
-//    HashSet<String> secColSetOfElems;
-//    HashSet<String> thirdColSetOfElems;
-
-    Group(){
-        ListOfRows = new ArrayList<>();
-        SetOfElems = new HashMap<>();
-
-    }
-
-    Group(String[] strArr){
-        ListOfRows = new ArrayList<>();
-        SetOfElems = new HashMap<>();
-//        secColSetOfElems = new HashSet<>();
-//        thirdColSetOfElems = new HashSet<>();
-        addStrToGroup(strArr);
-    }
-
-    // объединить группы
-    void megreGroup(Group other){
-        ListOfRows.addAll(other.ListOfRows);
-        SetOfElems.putAll(other.SetOfElems);
-//        firColSetOfElems.addAll(other.firColSetOfElems);
-//        secColSetOfElems.addAll(other.secColSetOfElems);
-//        thirdColSetOfElems.addAll(other.thirdColSetOfElems);
-    }
-
-    // добавить к группе новую строку
-    void addStrToGroup(String[] strArr){
-        ListOfRows.add(strArr);
-        firColSetOfElems.add(strArr[0].replace('\"', ' ').trim());
-        secColSetOfElems.add(strArr[1].replace('\"', ' ').trim());
-        thirdColSetOfElems.add(strArr[2].replace('\"', ' ').trim());
-
-    }
-
-    // Содержит ли группа элемент и если да то в каком столбце
-    int containsElem(String strElem){
-        if ( SetOfElems.get(strElem.replace('\"', ' ').trim()) )
-        return setOfGroupElems.contains(strElem);
-    }
-
-    void getElemSet(){
-        System.out.println(setOfGroupElems);
-    }
-}
-
 public class Solution {
     // В словаре хранятся списки строк, относящихся к одной группе,
     ArrayList<Group> groupsList;
 
     static final int elemsInRow = 3;
 
+    /*******************************************************************************************
+     * Принимает и обрабатывает файл
+     */
     Solution() {
         groupsList = new ArrayList<>();
     }
 
+    /*******************************groupCount************************************************************
+     * Принимает и обрабатывает файл
+     */
     void scanFile( String fileName ) {
 
-        try ( BufferedReader reader = new BufferedReader( new FileReader(fileName) ) )  {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            // хранит входящие строки и индекс соответствующей группы группы
             HashSet<String> strSet = new HashSet<>();
 
-            // Список словорей хранящий значения столбцов и номер группы к которой они относятся
-            ArrayList<HashMap<String, Integer>> elemsRows = new ArrayList<>(elemsInRow);
-            elemsRows.add(new HashMap<>());
-            elemsRows.add(new HashMap<>());
-            elemsRows.add(new HashMap<>());
+            // Список словорей хранящий столбцы значений и соответствующий  номер группы
+            ArrayList<HashMap<String, Group>> arrayOfKeysToGroupMap = new ArrayList<>();
 
-            List<String[]> strList = new ArrayList<>();
 
-            int groupNum = 0;
-            while ( reader.ready() ) {
+            Integer groupNum = 0;
+            while (reader.ready()) {
                 // Новая строка из файла
                 String curStr = reader.readLine();
 
-                if ( strSet.add(curStr) ){
-                    String[] strarr = curStr.split(";") ;
-                    // проверка корректности строки
-                    if ( Array.getLength(strarr) != elemsInRow ){
+                if ( strSet.add(curStr) ) {
+                    // Парсинг входящей строки
+                    String[] strarr = curStr.split(";");
+                    for ( String s: strarr ){
+                        s = s.replace('\"', ' ').trim();
+                    }
+                    if (Array.getLength(strarr) != elemsInRow) {
                         continue;
-                    }
-
-                    int groupInd = hasMatch(elemsRows, strarr);
-                    if ( groupInd != -1 ) {
-                        numList.get(groupInd).add(strarr);
-                        elemsRows.get(0).put(strarr[0],groupInd);
-
                     } else {
-                        strList.add(prevStrArr);
-                        numList.add(strList);
-                        strList = new ArrayList<>();
+                        for (int i = 0; i < elemsInRow; ++i ){
+                            arrayOfKeysToGroupMap.add(new HashMap<>());
+                        }
                     }
+                    // Проверка эллентов строки
+                    Group findGroup = null;
+                    System.out.println("Start parse group" + groupNum++);
+                    for ( int i = 0; i < strarr.length; ++i ) {
+                        // карта имеющихся значений соответствующего столбца i
+                        HashMap<String, Group> keysToGroupMap = arrayOfKeysToGroupMap.get(i);
+                        // совпадение значения со строкой в уже имеющейся группе
+                        if ( findGroup == null ) {
 
-                    if ( !reader.ready() ) {
-                        strList.add(prevStrArr);
-                        numList.add(strList);
+                            findGroup = keysToGroupMap.get(strarr[i]);
+                            if ( findGroup != null ){
+                                findGroup.addStrToGroup(strarr);
+                            }
+                        } else {
+                            Group otherFindGroup = keysToGroupMap.get(strarr[i]);
+                            if ( otherFindGroup == null || findGroup.equals(otherFindGroup) ) {
+                                continue;
+                            }
+                            findGroup.megreGroup(otherFindGroup);
+                            for ( int colInd = 0; colInd < strarr.length; ++colInd ) {
+                                // масив ключей принадлежащих соответствующему столбцу группы
+                                ArrayList<String> keysOfOtherGroup = otherFindGroup.getColKeys(colInd);
+                                HashMap<String, Group> column = arrayOfKeysToGroupMap.get(colInd);
+                                for ( String str: keysOfOtherGroup ) {
+                                    if (column.get(str) != null && column.get(str) == otherFindGroup ) {
+                                        column.replace(str, findGroup);
+                                    }
+                                }
+                            }
+                            groupsList.remove(otherFindGroup);
+                        }
+                    }
+                    if ( findGroup == null) {
+                        groupsList.add(new Group(strarr));
                     } else {
-                        prevStrArr = strarr;
+                        for( int i = 0; i < strarr.length; ++i ) {
+                            arrayOfKeysToGroupMap.get(i).put(strarr[i], findGroup);
+                        }
                     }
                 }
             }
-            numList.sort( (l1, l2) -> l2.size() - l1.size());
-        }
-        catch(IOException ex) {
+            groupsList.sort((l1, l2) -> l2.size() - l1.size() );
+
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-    Integer hasMatch( ArrayList<HashMap<String, Integer>> aHm, String[] aStr ) {
-        int groupNum = -1;
-        for (int i = 0; i < 3; ++i ){
-            if ( aHm.get(i).containsKey( aStr[i].replace('\"', ' ').trim()) ){
-                System.out.println(i + " MATCH [" + aStr[i] + "]");
-                // Возвращаю номер группы к которой относится совпавший ключ
-                if ( groupNum == -1 ){
-                    groupNum = aHm.get(i).get(aStr[i]);
-                } else {
 
-                }
-            }
-        }
-        return -1;
-    }
-
+    /*******************************************************************************************
+     * Создает файл и записывает в него обработанные данные
+     */
     void printFile(){
         // "result-without-goup.csv"
         try(FileWriter writer = new FileWriter("newresult.csv", false))
         {
             int groupInd = 1;
-            for(List<String[]> strList : numList ){
+            for(Group group : groupsList ){
                 writer.write("Group " + groupInd++ );
-                if (strList.size() > 1 ){
-                    System.out.println(groupInd + " strList.size() " + strList.size());
-                }
                 writer.append('\n');
-                for (String[] curStr : strList) {
+                for ( String[] curStr : group.getListOfRows() ) {
                     for ( String str : curStr ){
                         writer.write(str);
                         writer.write(";");
