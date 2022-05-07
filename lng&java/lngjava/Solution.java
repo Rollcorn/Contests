@@ -9,8 +9,6 @@ public class Solution {
     // В словаре хранятся списки строк, относящихся к одной группе,
     ArrayList<Group> groupsList;
 
-    static final int elemsInRow = 3;
-
     /*******************************************************************************************
      * Конструктор
      */
@@ -27,23 +25,21 @@ public class Solution {
             HashSet<String> strSet = new HashSet<>();
             // Список словорей хранящий столбцы значений и соответствующий  номер группы
             ArrayList<HashMap<String, Group>> arrayOfKeysToGroupMap = new ArrayList<>();
-
+            int index = 0;
             while (reader.ready()) {
                 String curStr = reader.readLine();
 
                 if ( strSet.add(curStr) ) {
                     // Обработка входящей строки
                     String[] strarr = curStr.split(";");
-
                     for (int i = 0; i < strarr.length; ++i ){
                         strarr[i] = strarr[i].replace('\"', ' ').trim();
                     }
-                    if ( strarr.length != elemsInRow) {
+                    if ( strarr.length == 0 ) {
                         continue;
-                    } else {
-                        for (int i = 0; i < elemsInRow; ++i ){
-                            arrayOfKeysToGroupMap.add(new HashMap<>());
-                        }
+                    }
+                    while (  arrayOfKeysToGroupMap.size() < strarr.length) {
+                        arrayOfKeysToGroupMap.add(new HashMap<>());
                     }
 
                     // Поиск группы с совпадением по значению
@@ -94,7 +90,7 @@ public class Solution {
                     continue;
                 }
                 findGroup.mergeGroup(otherFindGroup);
-                for (int colInd = 0; colInd < keysArr.length; ++colInd ) {
+                for (int colInd = 0; colInd < keysArr.length && otherFindGroup.getColKeys(colInd) != null; ++colInd ) {
                     // масив ключей принадлежащих соответствующему столбцу группы
                     ArrayList<String> keysOfOtherGroup = otherFindGroup.getColKeys(colInd);
                     HashMap<String, Group> column = arrayOfKeysToGroupMap.get(colInd);
@@ -138,7 +134,7 @@ public class Solution {
 
             int groupInd = 1;
             for(Group group : groupsList ){
-                writer.write("Группа " + groupInd++ + '\n');
+                writer.write("\nГруппа " + groupInd++ + '\n');
                 for ( String[] curStr : group.getListOfRows() ) {
                     for ( String str : curStr ){
                         writer.write(str + ";");
@@ -155,11 +151,12 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String inputFileName = "resources/lng.csv";
-        String outputFileName = "result.csv";
-
+        String inputFileName = "resources/lng-big.csv";
+        String outputFileName = "result-big.csv";
+        long startWork = System.currentTimeMillis();
         s.scanFile(inputFileName);
         s.printFile(outputFileName);
+        System.out.println("Program worktime = " + (System.currentTimeMillis() - startWork)/1000 + " seconds");
 
     }
 }
