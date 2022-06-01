@@ -9,7 +9,11 @@ public class Group {
 
     // получить массив столбцов элементов принадлежащих группе
     public ArrayList<String> getColKeys(int i) {
-        return ColKeys.get(i);
+        if ( ColKeys.size() <= i) {
+            return null;
+        } else {
+            return ColKeys.get(i);
+        }
     }
 
     Group(){
@@ -40,10 +44,10 @@ public class Group {
     // Добавить к группе новую строку
     void addStrToGroup( String[] strArr ) {
         ListOfRows.add(strArr);
-        for ( int colIndex = 0; colIndex < elemsInRow; ++colIndex ) {
-            if (ColKeys.size() == colIndex){
-                ColKeys.add(new ArrayList<>());
-            }
+        while (ColKeys.size() < strArr.length){
+            ColKeys.add(new ArrayList<>());
+        }
+        for ( int colIndex = 0; colIndex < strArr.length; ++colIndex ) {
             ColKeys.get(colIndex).add( strArr[colIndex] );
         }
     }
@@ -68,8 +72,6 @@ public class Group {
         return id;
     }
 
-    // Ожидаемое кол-во элементов в строке
-    static final int elemsInRow = 3;
 
     static private int groupCount = 0;
     private final int id;
