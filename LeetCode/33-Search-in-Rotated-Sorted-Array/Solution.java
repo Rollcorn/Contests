@@ -20,12 +20,12 @@ public class Solution {
 				result = search(Arrays.copyOfRange(nums, left, middle), target);
 			} else {
 				int index = search(Arrays.copyOfRange(nums, middle, nums.length), target);
-				result = index == -1? -1 : middle + index;
+				result = index == -1 ? -1 : middle + index;
 			}
 		} else {
 			if (nums[middle] > nums[right] && target <= nums[right]) {
 				int index = search(Arrays.copyOfRange(nums, middle, nums.length), target);
-				result = index == -1? -1 : middle + index;
+				result = index == -1 ? -1 : middle + index;
 			} else {
 				result = search(Arrays.copyOfRange(nums, left, middle), target);
 			}
@@ -42,12 +42,3 @@ public class Solution {
 		
 	}
 }
-
-
-//		if(nums[middle]>nums[left]){
-//				result=search(Arrays.copyOfRange(nums,middle+1,nums.length),target);
-//				}else if(nums[middle]<nums[left]&&target>nums[left]){
-//						                          result=search(Arrays.copyOfRange(nums,left,middle),target);
-//						                          }else{
-//						                          return-1;
-//						                          }
